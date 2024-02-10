@@ -1,7 +1,7 @@
 import { createImageUrl } from "../services/movieServices";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
-const CastRow = ({ title, data, handleMovieClick }) => {
+const CastRow = ({ title, data }) => {
   const { cast } = data;
   const rowId = Math.floor(Math.random() * 1000);
 
@@ -37,9 +37,10 @@ const CastRow = ({ title, data, handleMovieClick }) => {
                 alt={title}
                 loading="lazy"
               />
-              <p className="absolute bottom-0 flex justify-center bg-black/60 w-full py-2 text-sm">
-                {name}
-              </p>
+
+              <div className="absolute top-0 left-0 w-full h-full bg-black/80 opacity-0 hover:opacity-100 transition ease-out duration-500 flex items-center justify-center">
+                <p className="text-sm">{name}</p>
+              </div>
             </div>
           ))}
         </div>

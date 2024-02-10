@@ -5,7 +5,7 @@ import {
   useGetPopularMoviesQuery,
   useGetTrendingMoviesQuery,
   useGetUpcommingMoviesQuery,
-} from "../redux/moviesApi";
+} from "../redux/services/moviesApi";
 
 const Home = () => {
   const { data: popularMoviesData } = useGetPopularMoviesQuery();

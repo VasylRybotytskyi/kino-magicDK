@@ -1,10 +1,9 @@
-// import { useEffect, useState } from "react";
 import MovieItem from "./MovieItem";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const MovieRow = ({ title, data, handleMovieClick }) => {
   if (!data || !Array.isArray(data)) {
-    return null; // або інша обробка, яку ви хочете здійснити, якщо data не є масивом
+    return null;
   }
 
   const rowId = Math.floor(Math.random() * 1000);

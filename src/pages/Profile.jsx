@@ -18,7 +18,7 @@ const Profile = () => {
 
           <div className="absolute top-[20%] p-4 md:p-8">
             <h1 className="text-2xl md:text-3xl font-nsans-bold ">
-              Улюблені фільми
+              Мій профіль
             </h1>
             <p className="font-nsans-light text-gray-400 text-lg">
               {user.email}
@@ -26,9 +26,9 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* <h2 className="text-white font-sans-bold md:text-xl p-4 capitalize">
+        <h2 className="text-white font-sans-bold md:text-xl p-4 capitalize">
           Улюблені фільми
-        </h2> */}
+        </h2>
         <FavoritesRow />
       </div>
     </>

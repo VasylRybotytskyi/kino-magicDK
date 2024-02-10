@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useGetVideoByIdQuery } from "../redux/moviesApi";
+import { useGetVideoByIdQuery } from "../redux/services/moviesApi";
 import Loader from "./common/Loader";
 
 const Trailer = ({ title, closeTrailer, id }) => {

@@ -50,54 +50,62 @@ const FavoritesRow = () => {
           Завантаження улюблених фільмів...
         </p>
       ) : (
-        <div className="relative flex items-center group">
-          <MdChevronLeft
-            onClick={() => slide(-500)}
-            className="bg-white rounded-full absolute left-2 opacity-80 text-gray-700 z-10 hidden group-hover:block cursor-pointer"
-            size={40}
-          />
-          <div
-            id={`slider`}
-            className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
-          >
-            {movies.map((movie) => (
+        <>
+          {movies.length === 0 ? (
+            <p className="flex items-center justify-center py-10">
+              Додайте фільм до улюблених
+            </p>
+          ) : (
+            <div className="relative flex items-center group">
+              <MdChevronLeft
+                onClick={() => slide(-500)}
+                className="bg-white rounded-full absolute left-2 opacity-80 text-gray-700 z-10 hidden group-hover:block cursor-pointer"
+                size={40}
+              />
               <div
-                key={movie.id}
-                className="relative inline-block rounded-lg overflow-hidden cursor-pointer m-2"
+                id={`slider`}
+                className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
               >
-                <img
-                  className="w-full sm:h-[100px] mdl:h-[110px] lg:h-[150px] block object-cover object-top"
-                  src={createImageUrl(
-                    movie.backdrop_path ?? movie.poster_path,
-                    "w500"
-                  )}
-                  alt={movie.title}
-                />
-
-                <div className="absolute top-0 left-0 w-full h-40 bg-black/80 opacity-0 hover:opacity-100">
-                  <Link to={`/movie/${movie.id}`}>
-                    <p className="whitespace-normal text-xs md:text-sm flex justify-center items-center h-full font-nsans-bold">
-                      {movie.title}
-                    </p>
-                  </Link>
-
-                  <p>
-                    <AiOutlineClose
-                      size={20}
-                      onClick={() => handleUnlikeShows(movie)}
-                      className="absolute top-2 right-2"
+                {movies.map((movie) => (
+                  <div
+                    key={movie.id}
+                    className="relative inline-block rounded-lg overflow-hidden cursor-pointer m-2"
+                  >
+                    <img
+                      className="w-full sm:h-[100px] mdl:h-[110px] lg:h-[150px] block object-cover object-top"
+                      src={createImageUrl(
+                        movie.backdrop_path ?? movie.poster_path,
+                        "w500"
+                      )}
+                      alt={movie.title}
                     />
-                  </p>
-                </div>
+
+                    <div className="absolute top-0 left-0 w-full h-40 bg-black/80 opacity-0 hover:opacity-100">
+                      <Link to={`/movie/${movie.id}`}>
+                        <p className="whitespace-normal text-xs md:text-sm flex justify-center items-center h-full font-nsans-bold">
+                          {movie.title}
+                        </p>
+                      </Link>
+
+                      <p>
+                        <AiOutlineClose
+                          size={20}
+                          onClick={() => handleUnlikeShows(movie)}
+                          className="absolute top-2 right-2"
+                        />
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <MdChevronRight
-            onClick={() => slide(500)}
-            className="bg-white rounded-full absolute right-2 opacity-80 text-gray-700 z-10 hidden group-hover:block cursor-pointer"
-            size={40}
-          />
-        </div>
+              <MdChevronRight
+                onClick={() => slide(500)}
+                className="bg-white rounded-full absolute right-2 opacity-80 text-gray-700 z-10 hidden group-hover:block cursor-pointer"
+                size={40}
+              />
+            </div>
+          )}
+        </>
       )}
     </>
   );

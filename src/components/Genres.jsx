@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import genresList from "./data/genresData";
+import genresList from "../data/genresData";
 
 const Genres = ({ handleGenreChange }) => {
   const [isExpanded, setIsExpanded] = useState(false);

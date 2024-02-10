@@ -25,23 +25,19 @@ export function AuthContextProvider({ children }) {
   }, []);
 
   async function signUp(email, password) {
-    // Перевірка, чи існує користувач з такою ж електронною поштою вже
     const userRef = doc(db, "users", email);
     const userDoc = await getDoc(userRef);
 
     if (userDoc.exists()) {
-      // throw new Error("Користувач з цією поштою вже існує");
       toast.error("Цей Email вже існує");
     }
 
-    // Якщо немає, продовжте реєстрацію користувача
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
 
-    // Встановлення даних користувача в Firestore
     await setDoc(userRef, { favShows: [] });
 
     return userCredential.user;

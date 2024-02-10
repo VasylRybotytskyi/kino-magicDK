@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { icons } from "../components/data/footerData.js";
+import { icons } from "../data/footerData.js";
 
 const Footer = () => {
   return (

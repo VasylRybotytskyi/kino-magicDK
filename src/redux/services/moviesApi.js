@@ -33,7 +33,7 @@ export const movieApi = createApi({
     }),
     getMovieByName: builder.query({
       query: (query) =>
-        `/search/movie?query=${query}&api_key=${apiKey}&language=uk&page=1`,
+        `/search/movie?query=${query}&api_key=${apiKey}&language=uk`,
     }),
   }),
 });
