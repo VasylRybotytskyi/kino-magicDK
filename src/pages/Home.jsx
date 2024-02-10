@@ -1,6 +1,6 @@
 import Hero from "../components/Hero";
 import MovieRow from "../components/MovieRow";
-import filterMovies from "../utils/filters/filterMovies";
+import filterMovies from "../utils/filterMovies";
 import {
   useGetPopularMoviesQuery,
   useGetTrendingMoviesQuery,

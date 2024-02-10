@@ -20,7 +20,7 @@ const FavoritesRow = () => {
         (doc) => {
           if (doc.exists()) {
             setMovies(doc.data().favShows);
-            setIsLoading(false); // Позначити, що дані завантажені
+            setIsLoading(false);
           }
         }
       );
@@ -45,10 +45,10 @@ const FavoritesRow = () => {
 
   return (
     <>
-      {isLoading ? ( // Перевірка, чи дані ще завантажуються
+      {isLoading ? (
         <p className="flex items-center justify-center py-10">
           Завантаження улюблених фільмів...
-        </p> // Показати Loader, якщо дані ще завантажуються
+        </p>
       ) : (
         <div className="relative flex items-center group">
           <MdChevronLeft

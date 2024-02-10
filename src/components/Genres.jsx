@@ -2,16 +2,19 @@ import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import genresList from "./data/genresData";
 
-const Genres = ({ selectedGenre, handleGenreChange }) => {
+const Genres = ({ handleGenreChange }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedGenre, setSelectedGenre] = useState(1);
 
-  const handleGenreClick = (genre, event) => {
+  const handleGenreClick = (genre, e) => {
+    setSelectedGenre(genre);
+
     if (genre === "..." && isExpanded) {
       setIsExpanded(false);
     } else {
       handleGenreChange(genre);
     }
-    event.stopPropagation();
+    e.stopPropagation();
   };
 
   return (
@@ -22,7 +25,7 @@ const Genres = ({ selectedGenre, handleGenreChange }) => {
           className={`px-2 py-1 cursor-pointer ${
             genre.id === selectedGenre ? "bg-red-600 rounded-lg" : ""
           }`}
-          onClick={(event) => handleGenreClick(genre.id, event)}
+          onClick={(e) => handleGenreClick(genre.id, e)}
         >
           {genre.name}
         </li>

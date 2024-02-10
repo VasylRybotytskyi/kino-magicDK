@@ -10,7 +10,6 @@ const CastRow = ({ title, data, handleMovieClick }) => {
     slider.scrollLeft = slider.scrollLeft + offset;
   };
 
-  // Видаляємо елементи з пустим profile_path
   const filteredCast = cast.filter((actor) => actor.profile_path);
 
   return (

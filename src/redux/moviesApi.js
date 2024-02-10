@@ -7,8 +7,11 @@ export const movieApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.themoviedb.org/3" }),
   endpoints: (builder) => ({
     getMovies: builder.query({
-      query: (page) =>
-        `/discover/movie?api_key=${apiKey}&language=uk&page=${page}&with_original_language=en&year=2023`,
+      query: (params) => ({
+        url: `/discover/movie?api_key=${apiKey}`,
+        method: "GET",
+        params,
+      }),
     }),
     getPopularMovies: builder.query({
       query: () => `/movie/popular?api_key=${apiKey}&language=uk`,
