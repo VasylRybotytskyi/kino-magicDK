@@ -6,9 +6,9 @@ import Liked from "./common/Liked";
 import CircularRate from "./common/CircularRate";
 import CastRow from "./CastRow";
 import Genres from "./common/GenresRow";
+import { motion } from "framer-motion";
 
 const MovieInfo = ({ data }) => {
-  console.log(data);
   const [trailerModal, setTrailerModal] = useState(false);
 
   const handleTrailerModal = () => {
@@ -25,7 +25,6 @@ const MovieInfo = ({ data }) => {
     vote_average,
     genres,
     runtime,
-
     status,
   } = data;
 
@@ -46,7 +45,10 @@ const MovieInfo = ({ data }) => {
         <div className=" w-full min-h-full md:flex md:gap-10 pt-[70px] mb-[50px] ">
           {poster_path && (
             <div className="relative w-full md:w-[700px] h-[600px]">
-              <img
+              <motion.img
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 0.9, scale: 1 }}
+                transition={{ duration: 1 }}
                 className="w-full h-full object-cover object-center bg-gradient-to-r from-black to-transparent opacity-90 rounded-lg   "
                 src={createImageUrl(poster_path, "original")}
                 alt={title}
@@ -103,10 +105,12 @@ const MovieInfo = ({ data }) => {
               <p>Українська</p>
             </div>
 
-            <div className="flex items-start gap-5">
-              <p>Опис:</p>
-              <p className="w-full text-gray-200 ">{overview}</p>
-            </div>
+            {overview && (
+              <div className="flex items-start gap-5">
+                <p>Опис:</p>
+                <p className="w-full text-gray-200 ">{overview}</p>
+              </div>
+            )}
           </div>
         </div>
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import {
   useGetMovieByNameQuery,
   useGetMoviesQuery,
@@ -8,6 +9,7 @@ import Search from "../components/common/Search";
 import Genres from "../components/Genres";
 import Button from "../components/common/Button";
 import { Pagination } from "@mui/material";
+import filterMovies from "../utils/filterMovies";
 
 const initialState = {
   language: "uk",
@@ -42,7 +44,7 @@ const Movies = () => {
 
   useEffect(() => {
     if (searchMoviesData?.results?.length > 0) {
-      setMovies(searchMoviesData.results);
+      setMovies(filterMovies(searchMoviesData.results));
     } else {
       setMovies(moviesData?.results);
     }
@@ -88,7 +90,13 @@ const Movies = () => {
       </div>
 
       {!searchTerm && (
-        <div className="flex items-center justify-center py-10">
+        <motion.div
+          className="flex items-center justify-center py-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <Pagination
             count={100}
             page={params.page}
@@ -99,7 +107,7 @@ const Movies = () => {
                 color: "white",
                 fontWeight: "bold",
               },
-              "& .MuiPaginationItem-page.Mui-selected, & .MuiPaginationItem-page:hover":
+              "& .MuiPaginationItem-page.Mui-selected, & .MuiPaginationItem-page:hover, & .MuiPaginationItem-page.Mui-selected:hover":
                 {
                   backgroundColor: "#DC2626",
                 },
@@ -111,7 +119,7 @@ const Movies = () => {
               },
             }}
           />
-        </div>
+        </motion.div>
       )}
     </div>
   );

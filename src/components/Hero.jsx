@@ -3,6 +3,7 @@ import { createImageUrl } from "../services/movieServices";
 import Trailer from "./Trailer";
 import { Link } from "react-router-dom";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import { motion } from "framer-motion";
 
 const Hero = ({ data }) => {
   const [movie, setMovie] = useState({});
@@ -31,7 +32,10 @@ const Hero = ({ data }) => {
       <div className="w-full h-full">
         <div className="absolute w-full h-[550px] lg:h-[750px] ">
           {backdrop_path && (
-            <img
+            <motion.img
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 0.4, scale: 1 }}
+              transition={{ duration: 0.5 }}
               className="w-full h-full object-cover object-center bg-gradient-to-r from-black to-transparent opacity-40"
               src={createImageUrl(backdrop_path, "original")}
               alt={title}
@@ -41,7 +45,12 @@ const Hero = ({ data }) => {
 
           <div className="bg-gradient-to-r from-white to-transparent h-[2px] w-[100%]"></div>
 
-          <div className="absolute w-full top-[20%] lg:top-[25%] p-4 md:p-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="absolute w-full top-[20%] lg:top-[25%] p-4 md:p-8"
+          >
             <h1 className="text-3xl md:text-5xl font-nsans-bold">{title}</h1>
             <div className="flex mt-8 mb-4">
               <button
@@ -61,7 +70,7 @@ const Hero = ({ data }) => {
             <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200 ">
               {truncate(overview, 165)}
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
       {trailerModal && (
