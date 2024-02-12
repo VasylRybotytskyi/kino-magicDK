@@ -44,19 +44,23 @@ const MovieInfo = ({ data }) => {
       <div className="w-full bg-black bg-opacity-70 p-4 md:p-8 ">
         <div className=" w-full min-h-full md:flex md:gap-10 pt-[70px] mb-[50px] ">
           {poster_path && (
-            <div className="relative w-full md:w-[700px] h-[600px]">
-              <motion.img
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 0.9, scale: 1 }}
-                transition={{ duration: 1 }}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 0.9, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="relative w-full md:w-[700px] h-[600px]"
+            >
+              <img
                 className="w-full h-full object-cover object-center bg-gradient-to-r from-black to-transparent opacity-90 rounded-lg   "
-                src={createImageUrl(poster_path, "original")}
+                src={createImageUrl(poster_path, "w500")}
                 alt={title}
+                loading="lazy"
               />
+
               <p className="absolute top-3 right-0 bg-black/60 px-7 py-2 rounded-l-lg">
                 {formatTime(runtime)}
               </p>
-            </div>
+            </motion.div>
           )}
 
           <div className="w-full md:w-[50%] lg:w-full flex flex-col gap-5 mt-5 md:mt-0">
